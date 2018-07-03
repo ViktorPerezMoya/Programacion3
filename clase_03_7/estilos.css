@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Galada';
+    src: url(Galada-Regular.ttf);
+} 
+@font-face {
+    font-family: 'Encode Sans Condensed';
+    src: url(EncodeSansCondensed-Regular.ttf);
+} 
+body{
+    background-color: darkorchid;
+    color: white;
+}
+h1{
+    text-align: center;
+    font-family: 'Galada', cursive;
+}
+.padre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    font-family: 'Encode Sans Condensed', sans-serif;
+    text-align: justify;
+    width: 500px;
+}
+.buscar{
+    padding: 6px;
+    background: #6666ff;
+    color: white;
+    border-radius: 4px;
+    font-family: sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+}
+.encontrado{
+    background-color: yellow;
+    color: black;
+}
