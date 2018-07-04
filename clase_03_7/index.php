@@ -18,7 +18,7 @@
                 2 - Que al poner el foco sobre el cuadro de busqueda que cambie el color de fondo de la pagina web
                 3 - Al hacer doble click sobre la palabra que el fondo cambie a im tercer color
                 4 - Al clicar el boton de busqueda que cambie el color de boton y al soltar el boton retorne al color normal
-                
+                AYUDA: puede usar funciones toArray de Jquery, innerHTML de javascript, y replace de javascript
                 -->
                 <form>
                     <input type="text" id="parametro" value="buscar palabra"/>
