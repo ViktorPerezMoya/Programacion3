@@ -1,0 +1,14 @@
+#recuadro {
+  color: #ff3366;
+  background-color:#ff0;
+  position:absolute;
+  text-align:center;/*centra el texto*/
+  left:40px;/*coloca el div a 40 px de la orilla izquierda*/
+  top:30px;/*coloca el div a 40 px de la orilla superior*/
+  width:800px;/*ancho*/
+  height:70px;/*alto*/
+}
+/*h1{
+    width: fit-content;
+}*/
+

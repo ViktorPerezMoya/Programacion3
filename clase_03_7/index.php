@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Clase 03 - 07</title>
         <link rel="StyleSheet" href="estilos.css" type="text/css">
-        <script src="jquery-3.3.1.min.js"></script>
+        <script src="jquery.js"></script>
         <script src="scripts.js"></script>
     </head>
     <body>
