@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+https://www.youtube.com/watch?v=FL_odxf4zq4
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" >
+        <style>
+            body{
+                margin: 0;
+                font-family: sans-serif;/*fuente de letra que tendra la pagina*/
+            }
+            header{
+                width: 100%;/*ancho de header*/
+                background-color: tomato;
+            }
+            #btn-menu{
+                display: none;/*el checkbox no se vera*/
+            }
+            header label{
+                display: none;/*el label del check box tampoco se vera*/
+                width: 30px;/*el label tendra 30 px de ancho*/
+                height: 30px;/*el label tendra 30 px de ancho*/
+                padding: 10px;/*del borde hacia el interior habran 10px*/
+                color: white;
+                font-size: 29px;/*tamaño de letra*/
+                border-right: 1px solid #fff; /* el borde derecho sera de 1px sera continuo y de color blanco*/
+            }
+            header label:hover{
+                cursor: pointer;/*cuando se superponga el puntero en el check se volvera tipop pointer (manito))*/
+                background: rgba(0,0,0,0.3);/*el label del check tendra un background transparente de con una opacidad del 30%*/
+            }
+            
+            .menu ul{
+                margin: 0;
+                list-style: none;/*no habra estilos (esto quita el punto)*/
+                padding: 0;
+                display: flex;/*los li se reacomodaran de a cuerdo al espacio disponible (flexible))*/
+                /*flex-direction: row;*/
+            }
+            .menu li{
+                border-right: 1px solid #fff;
+            }
+            .menu li:hover{
+                background: rgba(0,0,0,0.3);
+            }
+            .menu li a{
+                display: block;
+                padding: 15px 20px;
+                color: #fff;
+                text-decoration: none;/*le quita el color azul del link*/
+            }
+            @media(max-width: 700px){
+                header label{
+                    display: block;
+                }
+                .menu{
+                    position: absolute;/*la posicion del nav es el ancho y alto del contenedor*/
+                    background: tomato;
+                    width: 70%;
+                    margin-left: -70%;
+                    transition: all 0.5s;
+                }
+                .menu ul{
+                    flex-direction: column;/*lista toma forma de columna*/
+                }
+                .menu li{
+                    border-top: 1px solid #fff;
+                }
+                #btn-menu:checked ~ .menu{ /*cuando el checkbox sea tildado entonces el helemento .menu...*/
+                    margin: 0; /* ... tendra un margin 0, ya no -70%*/
+                }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <header>
+            <input type="checkbox" id="btn-menu" >
+            <label for="btn-menu"><i class="fas fa-bars"></i></label> 
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Menu-1</a></li>
+                    <li><a href="#">Menu-2</a></li>
+                    <li><a href="#">Menu-3</a></li>
+                    <li><a href="#">Menu-4</a></li>
+                    <li><a href="#">Menu-5</a></li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+</html>
