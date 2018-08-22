@@ -19,7 +19,7 @@ https://www.youtube.com/watch?v=FL_odxf4zq4
             }
             header{
                 width: 100%;/*ancho de header*/
-                background-color: tomato;
+                background-color: blueviolet;
             }
             #btn-menu{
                 display: none;/*el checkbox no se vera*/
@@ -57,13 +57,32 @@ https://www.youtube.com/watch?v=FL_odxf4zq4
                 color: #fff;
                 text-decoration: none;/*le quita el color azul del link*/
             }
+            /* submenu */
+            .submenu{
+                position:absolute;
+                min-width: 140px;
+                flex-direction: column;
+                transition: all 0.5s;
+            }
+            .menu li:hover .submenu li{
+                display: block;
+            }
+            .submenu li{
+                display: none;
+                position: relative;
+                right: 0;
+                top: 0;
+                color: #fff;
+                background-color: #6666ff;
+                padding: 10px;
+            }
             @media(max-width: 700px){
                 header label{
                     display: block;/*se hace visible*/
                 }
                 .menu{
                     position: absolute;/*la posicion del nav es el ancho y alto del contenedor*/
-                    background: tomato; 
+                    background: blueviolet; 
                     width: 70%;
                     margin-left: -70%;
                     transition: all 0.5s;
@@ -77,6 +96,15 @@ https://www.youtube.com/watch?v=FL_odxf4zq4
                 #btn-menu:checked ~ .menu{ /*cuando el checkbox sea tildado entonces el helemento .menu...*/
                     margin: 0; /* ... tendra un margin 0, ya no -70%*/
                 }
+                /* submenu */
+                .menu li:hover .submenu{
+                    display: block !important;
+                    width: 100%;
+                    position: initial;
+                }
+                .menu li:hover .submenu li{
+                    display: block;
+                }
             }
             
         </style> 
@@ -87,8 +115,23 @@ https://www.youtube.com/watch?v=FL_odxf4zq4
             <label for="btn-menu"><i class="fas fa-bars"></i></label> 
             <nav class="menu">
                 <ul>
-                    <li><a href="#">Menu-1</a></li>
-                    <li><a href="#">Menu-2</a></li>
+                    <li><a href="#">Menu-1</a>
+                        <ul class="submenu">
+                            <li>Submenu-1</li>
+                            <li>Submenu-2</li>
+                            <li>Submenu-3</li>
+                            <li>Submenu-4</li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Menu-2</a>
+                        
+                        <ul class="submenu">
+                            <li>Submenu-1</li>
+                            <li>Submenu-2</li>
+                            <li>Submenu-3</li>
+                            <li>Submenu-4</li>
+                        </ul>
+                    </li>
                     <li><a href="#">Menu-3</a></li>
                     <li><a href="#">Menu-4</a></li>
                     <li><a href="#">Menu-5</a></li>
