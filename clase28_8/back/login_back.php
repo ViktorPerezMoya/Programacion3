@@ -26,10 +26,10 @@ if (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) {
 mysqli_free_result($result);
 
 if($existe){
-    header("Location: http://localhost/ejemplo/clase28_8/index.php");
+    echo 'OK';
 }else{
-    header("Location: http://localhost/ejemplo/clase28_8/login.php");
+    echo 'FAIL';
 }
 
 //fin de nuestro codigo
-mysqli_close($conn1);
+mysqli_close($conn);

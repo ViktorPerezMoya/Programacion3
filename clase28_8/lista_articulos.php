@@ -35,7 +35,43 @@ if(empty($_SESSION['id_user'])){
             </nav>
         </div>
         <div class="contenedor">
-            <h1>Bienvenido <?= $_SESSION['nombre_user'] ?></h1>
+            <h1>Lista de Articulos</h1>
+            <div class="dvtabla">
+<?php
+        $conn = mysqli_connect('localhost', 'root', '', 'bdnet', '3306');
+        if (!$conn) {
+            die('Could not connect to MySQL: ' . mysqli_connect_error());
+        }
+        mysqli_query($conn, 'SET NAMES \'utf8\'');
+        //inicio de consulta
+
+        echo '<table>';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th>id</th>';
+        echo '<th>precio</th>';
+        echo '<th>descripcion</th>';
+        echo '<th>acciones</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        $result = mysqli_query($conn, 'SELECT id, precio, descripcion FROM articulo');
+        while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) {
+            echo '<tr>';
+            echo '<td>' . $row['id'] . '</td>';
+            echo '<td>' . $row['precio'] . '</td>';
+            echo '<td>' . $row['descripcion'] . '</td>';
+            echo '<td> <a href="#">Editar</a> <a href="#">Borrar</a></td>';
+            echo '</tr>';
+        }
+        mysqli_free_result($result);
+        echo '</tbody>';
+        echo '</table>';
+
+        //fin de consulta
+        mysqli_close($conn);
+?>
+        </div>
         </div>
     </body>
 </html>

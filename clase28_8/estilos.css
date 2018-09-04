@@ -1,0 +1,117 @@
+body{
+    background-color: tomato;
+    font-family: sans-serif;
+    color: white;
+}
+div.login{
+    margin-top: 15%;
+    margin-left: 40%;
+}
+.login>form{
+    width: 300px;
+    text-align: center;
+}
+fieldset{
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+form input{
+    border-radius: 5px;
+    border: 1px solid #fff;
+    height: 30px;
+    margin: 5px;
+    padding: 5px;
+}
+form input.submit{
+    background-color: #6666ff;
+    color: white;
+    padding: 10px;
+    height: 40px;
+}
+#mensajes{
+    color:red;
+    background: #f3caca;
+    border: 1px solid #f50000;
+    margin: 5px;
+    border-radius: 5px;
+}
+.welcome{
+    display: block;
+}
+/*menu*/
+.menu{
+    width: 100%;
+}
+.menu>nav{
+    margin: auto;
+    height: 60px;
+    background: black;
+}
+.menu ul, .menu ul li ul{
+    list-style: none;
+    padding-left: 0;
+}
+.menu > nav > ul > li{
+    float: left;
+}
+.menu  ul  li  a{
+    text-decoration: none !important;
+    background: black;
+    color: white;
+    display: block;
+    padding: 20px 10px;
+    text-align: center;
+}
+.menu  ul  li  a:hover{
+    background-color: #434343;
+}
+.menu > nav > ul > li > ul{/*Estilo por defecto de la sublista*/
+    display: none;
+    position: absolute;
+    min-width: 140px;
+}
+.menu > nav > ul > li:hover > ul{/*cuando nos posisionamos sobre el li*/
+    display: block;
+}
+.menu ul li  ul  li{
+    position: relative;
+}
+.menu ul li  ul{
+    top: 75px;
+}
+/*contenido*/
+.contenedor > h1{
+    text-align: center;
+}
+.dvtabla{
+    text-align: center;
+}
+table{
+    margin: 0 auto;
+    text-align: left;
+    border-spacing: 0;
+}
+thead{
+    background: black;
+}
+thead th{
+    height: 50px;
+    text-align: center;
+}
+tbody tr{
+    border-bottom: 1px #ccccff;
+    background-color: #fff;
+    color: black;
+    height: 40px;
+}
+tbody tr td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+tbody tr:hover{
+    background-color: aliceblue;
+}
+
+
+
