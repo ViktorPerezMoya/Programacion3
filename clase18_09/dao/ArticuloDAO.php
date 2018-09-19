@@ -53,4 +53,44 @@ class ArticuloDAO {
         return $msg;
     }
     
+    
+    public function editArticulo($articulo){
+        $conn = BD::conectaDb();
+        $msg = "";
+        
+        $query = "UPDATE articulo SET precio = :prec, descripcion = :desc WHERE id = :id;";
+        $result = $conn->prepare($query);
+        if($result->execute(array('prec' => $articulo->getPrecio(), 'desc'=>$articulo->getDescripcion(), 'id'=>$articulo->getId()))){
+            $msg = "OK";
+        }else{
+            $msg = "FAIL";
+        }
+        
+        
+        BD::desconectar($conn);
+        
+        return $msg;
+    }
+    
+    public function deleteArticulo($id){
+        $conn = BD::conectaDb();
+        $msg = "";
+        
+        try{
+            $query = "DELETE FROM articulo WHERE id = :id;";
+            $result = $conn->prepare($query);
+            if($result->execute(array("id"=>$id))){
+                $msg = "OK";
+            }else{
+                $msg = "FAIL";
+            }
+            
+        } catch (Exception $e){
+            $msg = $e->getMessage();
+        } finally {
+            BD::desconectar($conn);
+        }
+        return $msg;
+    }
+    
 }

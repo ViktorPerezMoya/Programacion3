@@ -23,11 +23,60 @@ $(document).ready(function(){
             articulo.precio = $("#txtprecio").val();
             
             guardarArticulo(articulo);
-        }else{
+        }else {
+            articulo_actual.descripcion = $("#txtdescripcion").val();
+            articulo_actual.precio = $("#txtprecio").val();
             
+            editarArticulo(articulo_actual);
+            console.log(articulo_actual);
         }
     });
+    
+    $(".btn_delete").click(function(){
+        var fila = $(this).parents('tr');
+        var id = fila.find("td[id=id_art]").text();
+        borrarArticulo(id);
+    });
+    
+    $(".btn_edit").click(function(){
+        is_nuevo = false;
+        
+        var fila = $(this).parents('tr');
+        articulo_actual = new Object();
+        articulo_actual.id = fila.find("th[id=id_art]").text();
+        articulo_actual.descripcion = fila.find("td[id=desc]").text();
+        articulo_actual.precio = $.trim(fila.find("td[id=prec]").text().split("$")[1]);
+        
+        $("#txtdescripcion").val(articulo_actual.descripcion);
+        $("#txtprecio").val(articulo_actual.precio);
+        
+        $("#articuloModal").modal("show");
+        
+    });
 });
+
+function borrarArticulo(id){
+    var request = $.ajax({
+        url: "../controlador/articulos_back.php",
+        method: "POST",
+        data: {id: id, accion: "eliminar"},
+        dataType: "html"
+    });
+    
+    request.done(function(msg){
+        console.log(msg);
+        if(msg == "OK"){
+             notificar("Éxito!",{icon: "../template/img/bien.jpg", body:"El articulo se ha eliminado"});
+             $('#articuloModal').modal('hide');
+             cargarTabla();
+         }else{
+             notificar("Error!",{icon: "../template/img/mal.jpg", body:"Ocurrio un fallo: "+msg});
+         }
+    });
+    request.fail(function( jqXHR, textStatus ) {
+      alert( "Request failed: " + textStatus );
+    });
+}
 
 function guardarArticulo(articulo){
     
@@ -44,6 +93,8 @@ function guardarArticulo(articulo){
              notificar("Éxito!",{icon: "../template/img/bien.jpg", body:"El articulo se guardo correctamente"});
              //alert("GUARDADO!");
              $('#articuloModal').modal('hide');
+             $("#txtdescripcion").val("");
+             $("#txtprecio").val("");
              cargarTabla();
          }else{
              notificar("Error!",{icon: "../template/img/mal.jpg", body:"Ocurrio un fallo"});
@@ -56,6 +107,39 @@ function guardarArticulo(articulo){
       });
       
 }
+
+
+function editarArticulo(articulo){
+    
+      var request = $.ajax({
+        url: "../controlador/articulos_back.php",
+        method: "POST",
+        data: { descripcion : articulo.descripcion, precio: articulo.precio, id: articulo.id, accion: "editar" },
+        dataType: "html",
+      });
+
+      request.done(function( msg ) {
+         console.log(msg);
+         if(msg == "OK"){
+             notificar("Éxito!",{icon: "../template/img/bien.jpg", body:"Cambios guardados correctamente"});
+             //alert("GUARDADO!");
+             $('#articuloModal').modal('hide');
+             $("#txtdescripcion").val("");
+             $("#txtprecio").val("");
+             cargarTabla();
+             articulo=null;
+         }else{
+             notificar("Error!",{icon: "../template/img/mal.jpg", body:"Ocurrio un fallo"});
+             alert("ERROR!");
+         }
+      });
+
+      request.fail(function( jqXHR, textStatus ) {
+        alert( "Request failed: " + textStatus );
+      });
+      
+}
+
 
 
 function cargarTabla(){

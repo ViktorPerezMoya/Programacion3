@@ -4,10 +4,20 @@ require_once '../dao/ArticuloDAO.php';
 require_once '../modelo/Articulo.php';
 
 $accion = $_POST['accion'];
-if($accion == "crear"){
-    echo crearArticulo();
-}else if($accion == "consultar"){
-    echo traerTabla();
+
+switch ($accion){
+    case "crear":
+        echo crearArticulo();
+        break;
+    case "editar":
+        echo editarArticulo();
+        break;
+    case "consultar":
+        echo traerTabla();
+        break;
+    case "eliminar":
+        echo borrarArticulo();
+        break;
 }
 
 function crearArticulo(){
@@ -19,6 +29,21 @@ function crearArticulo(){
     $aDAO = new ArticuloDAO();
     
     return $aDAO->createArticulo($art);
+    
+}
+
+
+function editarArticulo(){
+    $descr = $_POST['descripcion'];
+    $prec = $_POST['precio'];
+    $id = $_POST['id'];
+    $art = new Articulo();
+    $art->setId($id);
+    $art->setPrecio($prec);
+    $art->setDescripcion($descr);
+    $aDAO = new ArticuloDAO();
+    
+    return $aDAO->editArticulo($art);
     
 }
 
@@ -35,4 +60,12 @@ function traerTabla(){
         $htmlTabla.= '</tr>';
     }
     return $htmlTabla;
+}
+
+function borrarArticulo(){
+    $id = $_POST['id'];
+    
+    $aDAO = new ArticuloDAO();
+    
+    return $aDAO->deleteArticulo($id);
 }

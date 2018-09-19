@@ -9,6 +9,7 @@
         <script src="../template/js/jquery.js"></script>
         <script src="../template/js/popper.js"></script>
         <script src="../template/js/bootstrap.min.js"></script>
+              
         <script src="../template/js/scripts.js"></script>
     </head>
     <body>
@@ -35,12 +36,12 @@
                     foreach (articulos() as $art){
                         ?>
                     <tr>
-                        <th><?= $art->getId();?></th>
-                        <td><?= $art->getDescripcion(); ?></td>
-                        <td>$ <?= $art->getPrecio(); ?></td>
+                        <th id="id_art"><?= $art->getId();?></th>
+                        <td id="desc"><?= $art->getDescripcion(); ?></td>
+                        <td id="prec">$ <?= $art->getPrecio(); ?></td>
                         <td>
-                            <button type="button" class="btn btn-primary">Editar</button>
-                            <button type="button" class="btn btn-danger">Borrar</button>
+                            <button type="button" class="btn btn-primary btn_edit">Editar</button>
+                            <button type="button" class="btn btn-danger btn_delete">Borrar</button>
                         </td>
                       </tr> 
                         <?php
